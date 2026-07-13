@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>王哥斗数查询</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="Gargantua_BGM.mp4" type="video/mp4">
+</video>
+
+<div id="app">
+
+  <!-- ===== 第一页：输入 ===== -->
+  <div id="pageInput" class="page active">
+    <div class="input-panel glass">
+      <div class="panel-title">斗数查询</div>
+      <div class="panel-sub">输入出生信息，开启命盘</div>
+
+      <div class="form-row">
+        <span class="form-label">阳历日期</span>
+        <div class="form-input">
+          <div class="picker-wrap" id="datePickerWrap">
+            <input type="text" id="birthDate" readonly placeholder="选择日期">
+            <div class="picker-mask" id="dateMask" style="display:none">
+              <div class="picker-popup">
+                <div class="picker-header">
+                  <span class="picker-cancel" id="dateCancel">取消</span>
+                  <span class="picker-confirm" id="dateConfirm">确定</span>
+                </div>
+                <div class="picker-body">
+                  <div class="picker-col" id="dateYearCol"></div>
+                  <div class="picker-col-label">年</div>
+                  <div class="picker-col" id="dateMonthCol"></div>
+                  <div class="picker-col-label">月</div>
+                  <div class="picker-col" id="dateDayCol"></div>
+                  <div class="picker-col-label">日</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-label">钟表时间</span>
+        <div class="form-input">
+          <div class="picker-wrap" id="timePickerWrap">
+            <input type="text" id="birthTime" readonly placeholder="选择时间">
+            <div class="picker-mask" id="timeMask" style="display:none">
+              <div class="picker-popup">
+                <div class="picker-header">
+                  <span class="picker-cancel" id="timeCancel">取消</span>
+                  <span class="picker-confirm" id="timeConfirm">确定</span>
+                </div>
+                <div class="picker-body">
+                  <div class="picker-col" id="timeHourCol"></div>
+                  <div class="picker-col-label">时</div>
+                  <div class="picker-col" id="timeMinCol"></div>
+                  <div class="picker-col-label">分</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-label">性别</span>
+        <div class="gender-btns">
+          <div class="gb" id="genderM">男</div>
+          <div class="gb" id="genderF">女</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="calcBtn">开始</button>
+    </div>
+  </div>
+
+  <!-- ===== 第二页：命盘 ===== -->
+  <div id="pageChart" class="page">
+
+    <div class="bazi-bar">
+      <span class="bazi-label">八字：</span>
+      <span class="bazi-text" id="baziText"></span>
+    </div>
+    <div class="chart-sub" id="chartInfo"></div>
+
+    <!-- 大限 -->
+    <div class="daxian-wrap"><div class="daxian-scroll" id="daxianScroll"></div></div>
+
+    <!-- 小限 -->
+    <div class="xiao-bar" id="xiaoBar">
+      <div class="xiao-arrow" id="xiaoPrev">◀</div>
+      <div class="xiao-btn" id="xiaoBtn">选择年限</div>
+      <div class="xiao-arrow" id="xiaoNext">▶</div>
+    </div>
+
+    <!-- 命盘（空心矩形） -->
+    <div class="pan-container" id="panContainer">
+      <div class="pan-wrap" id="panWrap">
+        <!-- 12 宫位由 JS 创建，4-2-2-4 空心矩形 -->
+      </div>
+    </div>
+
+    <!-- 右侧按钮区 -->
+    <div class="side-buttons" id="sideButtons">
+      <button class="btn-analysis" id="analysisBtn">🔮 斗数分析</button>
+      <div class="analysis-box" id="analysisLoadingBox" style="display:none">
+        <div class="analysis-loading">推算中...</div>
+      </div>
+      <div class="analysis-box" id="analysisErrorBox" style="display:none">
+        <div class="analysis-error" id="analysisErrorText"></div>
+        <button class="btn-analysis btn-analysis-sm" id="analysisRetryBtn">重试</button>
+      </div>
+      <button class="btn-analysis btn-analysis-sm" id="analysisShowBtn" style="display:none">🔮 斗数分析</button>
+      <button class="btn-back" id="backBtn">返回</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 分析遮罩层 ===== -->
+<div class="analysis-overlay" id="analysisOverlay" style="display:none">
+  <div class="analysis-box">
+    <div class="analysis-scroll" id="analysisScroll">
+      <div class="analysis-content" id="analysisContent"></div>
+    </div>
+  </div>
+  <button class="btn-analysis btn-analysis-sm" id="analysisOverlayBtn">▲ 收起批文</button>
+</div>
+
+<!-- ===== Loading ===== -->
+<div id="loadingToast">
+  <div class="spinner"></div>
+  <div class="loading-text" style="font-size:15px;color:#333">加载中...</div>
+</div>
+
+<!-- ===== Toast ===== -->
+<div id="toast" class="toast"></div>
+
+<script src="iztro.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
