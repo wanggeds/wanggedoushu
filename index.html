@@ -5,11 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>王哥斗数查询</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&family=Liu+Jian+Mao+Cao&family=ZCOOL+QingKe+HuangYou&family=Long+Cang&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<video autoplay muted loop playsinline id="bgVideo">
-  <source src="Gargantua_BGM.mp4" type="video/mp4">
+<video autoplay muted loop playsinline id="bgPage1">
+  <source src="bg1.mp4" type="video/mp4">
+</video>
+<video autoplay muted loop playsinline id="bgPage2" style="display:none">
+  <source src="bg2.mp4" type="video/mp4">
 </video>
 
 <div id="app">
@@ -17,7 +21,7 @@
   <!-- ===== 第一页：输入 ===== -->
   <div id="pageInput" class="page active">
     <div class="input-panel glass">
-      <div class="panel-title">斗数查询</div>
+      <div class="panel-title">王哥斗数</div>
       <div class="panel-sub">输入出生信息，开启命盘</div>
 
       <div class="form-row">
@@ -32,6 +36,7 @@
                   <span class="picker-confirm" id="dateConfirm">确定</span>
                 </div>
                 <div class="picker-body">
+                  <div class="picker-indicator"></div>
                   <div class="picker-col" id="dateYearCol"></div>
                   <div class="picker-col-label">年</div>
                   <div class="picker-col" id="dateMonthCol"></div>
@@ -57,6 +62,7 @@
                   <span class="picker-confirm" id="timeConfirm">确定</span>
                 </div>
                 <div class="picker-body">
+                  <div class="picker-indicator"></div>
                   <div class="picker-col" id="timeHourCol"></div>
                   <div class="picker-col-label">时</div>
                   <div class="picker-col" id="timeMinCol"></div>
@@ -90,13 +96,17 @@
     <div class="chart-sub" id="chartInfo"></div>
 
     <!-- 大限 -->
-    <div class="daxian-wrap"><div class="daxian-scroll" id="daxianScroll"></div></div>
+    <div class="dx-bar" id="dxBar">
+      <div class="dx-arrow" id="dxPrev">◀</div>
+      <div class="dx-btn" id="dxBtn">选择大限</div>
+      <div class="dx-arrow" id="dxNext">▶</div>
+    </div>
 
     <!-- 小限 -->
-    <div class="xiao-bar" id="xiaoBar">
-      <div class="xiao-arrow" id="xiaoPrev">◀</div>
-      <div class="xiao-btn" id="xiaoBtn">选择年限</div>
-      <div class="xiao-arrow" id="xiaoNext">▶</div>
+    <div class="xx-bar" id="xxBar">
+      <div class="xx-arrow" id="xxPrev">◀</div>
+      <div class="xx-btn" id="xxBtn">选择年限</div>
+      <div class="xx-arrow" id="xxNext">▶</div>
     </div>
 
     <!-- 命盘（空心矩形） -->
@@ -108,7 +118,7 @@
 
     <!-- 右侧按钮区 -->
     <div class="side-buttons" id="sideButtons">
-      <button class="btn-analysis" id="analysisBtn">🔮 斗数分析</button>
+      <button class="btn-analysis" id="analysisBtn">斗数分析</button>
       <div class="analysis-box" id="analysisLoadingBox" style="display:none">
         <div class="analysis-loading">推算中...</div>
       </div>
