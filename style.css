@@ -19,13 +19,7 @@ html, body {
   user-select: none;
 }
 
-/* ===== 背景 ===== */
-#bgPage1 {
-  position: fixed; top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: 0; pointer-events: none;
-  background: url('bg1.jpg') center center / cover no-repeat;
-}
+/* ===== 第二页视频背景 ===== */
 #bgPage2 {
   position: fixed; top: 0; left: 0;
   width: 100vw; height: 100vh;

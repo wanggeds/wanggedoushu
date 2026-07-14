@@ -401,10 +401,16 @@
     var pages = document.querySelectorAll('.page');
     for(var i=0;i<pages.length;i++)pages[i].classList.remove('active');
     $(id).classList.add('active');
-    // 切换背景：首页静态图，第二页视频
+    // 切换背景：首页Canvas星空，第二页视频
+    var bc=document.getElementById('bgCanvas');
     var v2=$('bgPage2');
-    if(id==='pageInput'){v2.style.display='none';v2.pause();}
-    else{v2.style.display='block';v2.play();}
+    if(id==='pageInput'){
+      if(bc)bc.style.display='block';
+      v2.style.display='none';v2.pause();
+    }else{
+      if(bc)bc.style.display='none';
+      v2.style.display='block';v2.play();
+    }
   }
 
   // ===== 齿轮感滚轮（CSS Scroll Snap 实现） =====
