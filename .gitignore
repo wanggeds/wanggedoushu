@@ -1,3 +1,4 @@
 # ignore large files
 *.tar.gz
 blackhole.jpg
+ffmpeg.exe
