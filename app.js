@@ -401,10 +401,10 @@
     var pages = document.querySelectorAll('.page');
     for(var i=0;i<pages.length;i++)pages[i].classList.remove('active');
     $(id).classList.add('active');
-    // 切换视频
-    var v1=$('bgPage1'),v2=$('bgPage2');
-    if(id==='pageInput'){v1.style.display='block';v2.style.display='none';v1.play();v2.pause();}
-    else{v1.style.display='none';v2.style.display='block';v2.play();v1.pause();}
+    // 切换背景：首页静态图，第二页视频
+    var v2=$('bgPage2');
+    if(id==='pageInput'){v2.style.display='none';v2.pause();}
+    else{v2.style.display='block';v2.play();}
   }
 
   // ===== 齿轮感滚轮（CSS Scroll Snap 实现） =====

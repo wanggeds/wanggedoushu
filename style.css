@@ -19,8 +19,14 @@ html, body {
   user-select: none;
 }
 
-/* ===== 视频背景 ===== */
-#bgPage1, #bgPage2 {
+/* ===== 背景 ===== */
+#bgPage1 {
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0; pointer-events: none;
+  background: url('blackhole.jpg') center center / cover no-repeat;
+}
+#bgPage2 {
   position: fixed; top: 0; left: 0;
   width: 100vw; height: 100vh;
   object-fit: cover; z-index: 0; pointer-events: none;
