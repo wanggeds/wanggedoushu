@@ -401,15 +401,15 @@
     var pages = document.querySelectorAll('.page');
     for(var i=0;i<pages.length;i++)pages[i].classList.remove('active');
     $(id).classList.add('active');
-    // 切换背景：首页Canvas星空，第二页视频
-    var bc=document.getElementById('bgCanvas');
-    var v2=$('bgPage2');
+    // 切换背景：首页星空Canvas，第二页极光Canvas
+    var s=document.getElementById('bgCanvas');
+    var a=document.getElementById('bgAurora');
     if(id==='pageInput'){
-      if(bc)bc.style.display='block';
-      v2.style.display='none';v2.pause();
+      if(s)s.style.display='block';
+      if(a)a.style.display='none';
     }else{
-      if(bc)bc.style.display='none';
-      v2.style.display='block';v2.play();
+      if(s)s.style.display='none';
+      if(a)a.style.display='block';
     }
   }
 

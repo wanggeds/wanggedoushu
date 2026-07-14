@@ -19,13 +19,6 @@ html, body {
   user-select: none;
 }
 
-/* ===== 第二页视频背景 ===== */
-#bgPage2 {
-  position: fixed; top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  object-fit: cover; z-index: 0; pointer-events: none;
-}
-
 #app {
   position: relative; z-index: 1;
   width: 100%; max-width: 480px;
